@@ -10,19 +10,19 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <div class="wrapper" id="wrapper">
 
-        <header><i class="bx bx-left-arrow-alt"></i>Weather App</header>
+        <header><i class="bx bx-left-arrow-alt" id="arrow-back"></i>Weather App</header>
 
-        <section class="input-part">
-            <p class="info-text">Please enter a valid city name</p>
-            <input type="text" placeholder="Enter city name" spellcheck="false" required>
+        <section class="input-part" id="input-part">
+            <p class="info-text" id="info-text">Please enter a valid city name</p>
+            <input type="text" id="input-city" placeholder="Enter city name" spellcheck="false" required>
             <div class="separator"></div>
-            <button>Get Device Location</button>
+            <button id="location-btn">Get Device Location</button>
         </section>
 
         <section class="weather-part">
-            <img src="icons/cloud.svg" alt="wheather icon">
+            <img src="icons/cloud.svg" id="weather-part-img" alt="wheather icon">
             <div class="temp">
                 <span class="numb">13</span>
                 <span class="deg">°</span>C

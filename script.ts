@@ -1,16 +1,16 @@
-const wrapper: HTMLElement = document.querySelector(".wrapper") as HTMLElement,
-inputPart: HTMLElement = wrapper.querySelector(".input-part")as HTMLElement,
-infoTxt: HTMLElement = inputPart.querySelector(".info-text")as HTMLElement,
-inputField = inputPart.querySelector("input")!,
-locationBtn: HTMLElement = inputPart.querySelector("button") as HTMLElement,
-wIcon: any = document.querySelector(".weather-part img"),
-arrowBack: HTMLElement = wrapper.querySelector("header i") as HTMLElement
+const wrapper = document.getElementById("wrapper") as HTMLElement
+const inputPart = document.getElementById("input-part")as HTMLElement
+const infoTxt = document.getElementById("info-text")as HTMLElement
+const userInput = document.getElementById("input-city") as HTMLInputElement 
+const locationBtn = document.getElementById("location-btn") as HTMLElement
+const wIcon = document.getElementById("weather-part-img") as HTMLImageElement
+const arrowBack = document.getElementById("arrow-back") as HTMLElement
+let url:string
 
-let api:string
-
-inputField.addEventListener("keyup", e => {
-    if(e.key == "Enter" && inputField.value !== "") {
-        requestAPi(inputField.value)
+userInput.addEventListener("keyup", function(event) {
+    const target = event.target as HTMLInputElement
+    if(event.key == "Enter" && target.value !== "") {
+        requestAPi(target.value)
     }
 })
 
@@ -28,7 +28,7 @@ arrowBack.addEventListener("click", () => {
 
 const onSuccess = (position: any) => {
     const{latitude, longitude} = position.coords
-    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9804707eddf44dbc8fc4327e1340f4e8`
+    url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=9804707eddf44dbc8fc4327e1340f4e8`
     fetchData()
 }
 
@@ -38,7 +38,7 @@ const onError = (error: any) => {
 }
 
 const requestAPi = (city: string) => {
-    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=9804707eddf44dbc8fc4327e1340f4e8`
+    url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=9804707eddf44dbc8fc4327e1340f4e8`
     fetchData()
 }
 
@@ -46,7 +46,7 @@ const fetchData = () => {
     infoTxt.innerText = "Getting weather details..." 
     infoTxt.classList.add("pending")
 
-    fetch(api).
+    fetch(url).
     then(response => response.json()).
     then(result => weatherDetails(result))
 }
@@ -54,7 +54,7 @@ const fetchData = () => {
 const weatherDetails = (info: any) => {  
     if(info.cod == "404") {
         infoTxt.classList.replace("pending", "error")
-        infoTxt.innerText = `${inputField.value} is not a valid city name`
+        infoTxt.innerText = `${userInput.value} is not a valid city name`
     } else {
         const city = info.name
         const country = info.sys.country
@@ -75,11 +75,11 @@ const weatherDetails = (info: any) => {
             wIcon.src = "icons/rain.svg"
         }
 
-        wrapper.querySelector(".temp .numb")!.innerHTML = `${Math.floor(temp)}`
+        wrapper.querySelector(".temp .numb")!.innerHTML = Math.floor(temp).toString()
         wrapper.querySelector(".weather")!.innerHTML = description
         wrapper.querySelector(".location span")!.innerHTML = `${city}, ${country}`
-        wrapper.querySelector(".temp .numb-2")!.innerHTML = `${Math.floor(feels_like)}`
-        wrapper.querySelector(".humidity span")!.innerHTML = `${humidity}%`
+        wrapper.querySelector(".temp .numb-2")!.innerHTML = Math.floor(feels_like).toString()
+        wrapper.querySelector(".humidity span")!.innerHTML = humidity
 
         infoTxt.classList.remove("pending", "error")
         wrapper.classList.add("active")
