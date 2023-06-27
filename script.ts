@@ -163,5 +163,5 @@ const setInputValue = () => window.onclick = e => {
     } 
 }
 
-searchInput.addEventListener("keypress", setInputValue)
+searchInput.addEventListener("click", setInputValue)
 
