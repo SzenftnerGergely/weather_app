@@ -1,7 +1,7 @@
 const wrapper = document.getElementById("wrapper") as HTMLElement
 const inputPart = document.getElementById("input-part")as HTMLElement
 const infoTxt = document.getElementById("info-text")as HTMLElement
-const searchInput = document.getElementById("input-city") as HTMLInputElement 
+let searchInput = document.getElementById("input-city") as HTMLInputElement 
 const locationBtn = document.getElementById("location-btn") as HTMLElement
 const wIcon = document.getElementById("weather-part-img") as HTMLImageElement
 const arrowBack = document.getElementById("arrow-back") as HTMLElement
@@ -43,7 +43,7 @@ function renderResults(results:string[]) {
 
     let content = results
         .map((item) => {
-        return `<li><a href="#">${item}</a></li>`
+        return `<li><a class"a-tag" href="#">${item}</a></li>`
     })
     .join("")
 
@@ -156,5 +156,9 @@ const weatherDetails = (info: any) => {
 }
 
 window.onclick = e => {
-    console.log(e.target);  // to get the element
+    const target = e.target as HTMLElement
+     
+    if(target.attributes[0]) {
+        searchInput.value = target.innerText
+    } 
 }
