@@ -155,10 +155,13 @@ const weatherDetails = (info: any) => {
     }
 }
 
-window.onclick = e => {
-    const target = e.target as HTMLElement
-     
+const setInputValue = () => window.onclick = e => {
+    const target = e.target as HTMLElement 
     if(target.attributes[0]) {
         searchInput.value = target.innerText
+        requestAPi(searchInput.value)
     } 
 }
+
+searchInput.addEventListener("keypress", setInputValue)
+
