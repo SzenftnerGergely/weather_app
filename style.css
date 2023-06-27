@@ -205,6 +205,14 @@ header i {
     list-style-type: none;
     margin-top: 4px;
     padding-left: 8px;
+
+}
+
+.results ul li:hover {
+    background-color: #43AFFC;
+    border-radius: 3px;
+    transition: ease-in-out 0.5s;
+    letter-spacing: 0.5px;
 }
 
 .results ul li a {

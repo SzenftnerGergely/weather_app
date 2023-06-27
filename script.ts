@@ -37,7 +37,7 @@ searchInput.addEventListener("keyup", () => {
     })
 
 function renderResults(results:string[]) {
-    if(!results.length){
+    if(results.length < 2){
         return searchWrapper.classList.remove("show")
     }
 
