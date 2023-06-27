@@ -162,7 +162,6 @@ const setInputValue = () => window.onclick = e => {
     if(target.localName == "a") {
         searchInput.value = target.innerText
         requestAPi(searchInput.value)
-        console.log(e)
     } 
 }
 
