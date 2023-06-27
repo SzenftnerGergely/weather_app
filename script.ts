@@ -9,7 +9,7 @@ let url:string
 
 const searchWrapper = document.querySelector(".autocomplete-search-box") as HTMLElement
 const resultsWrapper = document.querySelector(".results") as HTMLElement
-
+ 
 let searchable:string[] = []
 fetch('city.list.json')
     .then((response) => response.json())
@@ -155,3 +155,6 @@ const weatherDetails = (info: any) => {
     }
 }
 
+window.onclick = e => {
+    console.log(e.target);  // to get the element
+}
