@@ -204,8 +204,11 @@ header i {
 .results ul li {
     list-style-type: none;
     margin-top: 4px;
-    padding-left: 8px;
+    padding-left: 8px
+}
 
+.results {
+    display: none;
 }
 
 .results ul li:hover {
@@ -218,4 +221,8 @@ header i {
 .results ul li a {
     text-decoration: none;
     color: black
+}
+
+.show {
+    display: block;
 }

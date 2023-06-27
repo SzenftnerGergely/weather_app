@@ -38,19 +38,18 @@ searchInput.addEventListener("keyup", () => {
 
 function renderResults(results:string[]) {
     if(results.length < 2){
-        return searchWrapper.classList.remove("show")
+        return resultsWrapper.classList.remove("show")
     }
 
     let content = results
         .map((item) => {
-        return `<li><a class"a-tag" href="#">${item}</a></li>`
+        return `<li><a href="#">${item}</a></li>`
     })
     .join("")
 
-    searchWrapper.classList.add("show")
+    resultsWrapper.classList.add("show")
     resultsWrapper.innerHTML = `<ul>${content}</ul>`
 } 
-
 
 searchInput.addEventListener("keyup", function(event) {
     const target = event.target as HTMLInputElement
@@ -69,6 +68,9 @@ locationBtn.addEventListener("click", () => {
 
 arrowBack.addEventListener("click", () => {
     wrapper.classList.remove("active")
+    searchWrapper.classList.remove("show")
+    searchInput.value = ""
+    resultsWrapper.classList.remove("show")
 })
 
 const onSuccess = (position: any) => {
@@ -156,10 +158,11 @@ const weatherDetails = (info: any) => {
 }
 
 const setInputValue = () => window.onclick = e => {
-    const target = e.target as HTMLElement 
-    if(target.attributes[0]) {
+    const target = e.target as HTMLElement
+    if(target.localName == "a") {
         searchInput.value = target.innerText
         requestAPi(searchInput.value)
+        console.log(e)
     } 
 }
 
