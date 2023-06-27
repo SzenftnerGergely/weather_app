@@ -200,3 +200,14 @@ header i {
     font-size: 17px;
     padding: 0 2px 0 1px;
 }
+
+.results ul li {
+    list-style-type: none;
+    margin-top: 4px;
+    padding-left: 8px;
+}
+
+.results ul li a {
+    text-decoration: none;
+    color: black
+}

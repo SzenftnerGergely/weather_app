@@ -16,7 +16,11 @@
 
         <section class="input-part" id="input-part">
             <p class="info-text" id="info-text">Please enter a valid city name</p>
-            <input type="text" id="input-city" placeholder="Enter city name" spellcheck="false" required>
+            <div class="autocomplete-search-box">
+                <input type="text" id="input-city" placeholder="Enter city name" spellcheck="false" required>
+                <div class="results">
+                </div>
+            </div>
             <div class="separator"></div>
             <button id="location-btn">Get Device Location</button>
         </section>
