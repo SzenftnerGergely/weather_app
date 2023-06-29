@@ -69,8 +69,9 @@ locationBtn.addEventListener("click", () => {
 arrowBack.addEventListener("click", () => {
     wrapper.classList.remove("active")
     searchWrapper.classList.remove("show")
-    searchInput.value = ""
+    /* searchInput.value = "" */
     resultsWrapper.classList.remove("show")
+    /* document.body.style.background = "#43AFFC" */
 })
 
 const onSuccess = (position: any) => {
